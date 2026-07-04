@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ретрит в Замке Монсоро — AkhoMethod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0A0906; --black-soft: #12100B;
+    --gold: #C9A84C; --gold-light: #E8C96D; --gold-dim: rgba(201,168,76,0.5);
+    --white: #F5F2EC; --gray: #9a9488;
+    --card: rgba(255,255,255,0.03); --card-border: rgba(201,168,76,0.18);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black); color: var(--white);
+    font-family: 'Inter', sans-serif; font-weight: 300;
+    overflow-x: hidden; line-height: 1.6;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+  .back {
+    position: fixed; top: 24px; left: 24px; z-index: 50;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    padding: 8px 14px; border: 1px solid var(--card-border);
+    border-radius: 2px; background: rgba(10,9,6,0.8); backdrop-filter: blur(8px);
+    transition: all 0.3s;
+  }
+  .back:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    position: relative; padding: 80px 24px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 50% 35%, rgba(201,168,76,0.10) 0%, transparent 55%),
+      linear-gradient(180deg, #0A0906 0%, #12100B 100%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px; justify-content: center;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; width: 30px; height: 1px; background: var(--gold-dim);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(46px, 8vw, 88px); font-weight: 500;
+    line-height: 0.98; margin-bottom: 26px;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub {
+    font-size: 16px; color: var(--gray); max-width: 460px; margin: 0 auto 40px;
+    line-height: 1.8;
+  }
+  .hero-meta {
+    display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+  .hero-meta-item { text-align: center; }
+  .hero-meta-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 32px;
+    color: var(--gold-light); line-height: 1;
+  }
+  .hero-meta-label {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); margin-top: 6px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold); color: var(--black);
+    padding: 17px 44px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  section { padding: 90px 0; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 18px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 5vw, 46px); font-weight: 500; line-height: 1.1;
+    margin-bottom: 26px;
+  }
+  h2 em { font-style: italic; color: var(--gold-light); }
+  .divider { width: 56px; height: 1px; background: var(--gold); margin-bottom: 36px; }
+  p.lead { font-size: 16px; color: var(--gray); line-height: 1.9; margin-bottom: 18px; }
+  p.lead strong { color: var(--white); font-weight: 400; }
+
+  /* Castle features */
+  .features {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 44px;
+  }
+  .feature {
+    background: var(--card); border: 1px solid var(--card-border);
+    padding: 24px 20px; border-radius: 2px; transition: all 0.3s;
+  }
+  .feature:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .feature-title { font-size: 14px; color: var(--gold-light); font-weight: 400; margin-bottom: 6px; }
+  .feature-sub { font-size: 12px; color: var(--gray); }
+
+  /* Program days */
+  .day-block { margin-top: 44px; }
+  .day-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 14px 20px; background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.03));
+    border: 1px solid var(--gold-dim); border-radius: 2px; margin-bottom: 20px;
+  }
+  .day-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold-light); font-style: italic; }
+  .day-time { font-size: 11px; letter-spacing: 1px; color: var(--gray); text-transform: uppercase; }
+  .day-items { display: flex; flex-direction: column; gap: 2px; margin-bottom: 40px; }
+  .day-item {
+    display: grid; grid-template-columns: 20px 1fr; gap: 16px;
+    padding: 14px 20px; align-items: baseline;
+  }
+  .day-item::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); margin-top: 8px;
+  }
+  .day-item-title { font-size: 15px; color: var(--white); font-weight: 400; margin-bottom: 3px; }
+  .day-item-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* Pricing */
+  .pricing { background: var(--black-soft); }
+  .formula {
+    text-align: center; padding: 28px; margin: 32px 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.10), rgba(201,168,76,0.02));
+    border: 1px solid var(--gold-dim); border-radius: 3px;
+  }
+  .formula-line {
+    font-family: 'Cormorant Garamond', serif; font-size: 24px;
+    color: var(--gold-light); margin-bottom: 8px;
+  }
+  .formula-sub { font-size: 12px; color: var(--gray); letter-spacing: 1px; }
+  .price-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+  .price-table th {
+    background: var(--gold); color: var(--black);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
+    padding: 12px 16px; text-align: left;
+  }
+  .price-table td {
+    padding: 14px 16px; font-size: 14px; border-bottom: 1px solid var(--card-border);
+    color: var(--gray);
+  }
+  .price-table tr td:first-child { color: var(--white); font-weight: 400; }
+  .price-table tr td:last-child { color: var(--gold-light); font-weight: 500; }
+  .price-note { font-size: 12px; color: var(--gray); font-style: italic; margin-top: 16px; text-align: center; }
+
+  /* included list */
+  .included { list-style: none; margin-top: 32px; display: grid; gap: 12px; }
+  .included li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 15px; color: var(--gray);
+  }
+  .included li::before { content: '✦'; color: var(--gold); flex-shrink: 0; }
+
+  /* CTA */
+  .cta { text-align: center; padding: 100px 24px; position: relative; border-top: 1px solid var(--card-border); }
+  .cta::before {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta > * { position: relative; }
+  .cta p { color: var(--gray); font-size: 15px; max-width: 440px; margin: 0 auto 32px; line-height: 1.8; }
+
+  footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--card-border); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold-light); font-style: italic; margin-bottom: 10px; }
+  .footer-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-dim); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s, transform 0.8s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } * { animation:none !important; } }
+
+  @media (max-width: 640px) {
+    .features { grid-template-columns: 1fr 1fr; }
+    .price-table { font-size: 12px; }
+    .price-table th, .price-table td { padding: 10px 10px; }
+    .back { top: 16px; left: 16px; }
+    .day-head { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+  <a class="back" href="./index.html">← Назад</a>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Замок Монсоро · Подмосковье</div>
+      <h1>День для тела<br><em>и духа</em></h1>
+      <p class="hero-sub">Два дня трансформации в настоящем замке посреди леса у реки. Йога, сила, дыхание, танец и осознанное питание.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><div class="hero-meta-num">2</div><div class="hero-meta-label">дня · 1 ночь</div></div>
+        <div class="hero-meta-item"><div class="hero-meta-num">8–12</div><div class="hero-meta-label">человек</div></div>
+        <div class="hero-meta-item"><div class="hero-meta-num">6+</div><div class="hero-meta-label">практик</div></div>
+      </div>
+      <a class="btn" href="#booking">Забронировать место →</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="reveal">
+      <div class="eyebrow">Что это за день</div>
+      <h2>Не тренировка. <em>Погружение.</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Это не обычная тренировка и не выходной «ничегонеделания». Это цельный ретрит за городом — в настоящем замке, — выстроенный так, чтобы <strong>тело раскрылось, голова очистилась, а ты вернулся домой обновлённым</strong>.</p>
+      <p class="lead">Мы соединяем мягкое и сильное: утреннюю йогу и дыхание, прогулки на природе, осознанное питание под моим руководством как нутрициолога, силовую практику, танец раскрепощения и вечернее единение у костра.</p>
+    </section>
+
+    <section class="reveal">
+      <div class="eyebrow">Место проведения</div>
+      <h2>Замок <em>Монсоро</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Каменный замок с башнями, 1100 м², на участке 40 соток с лесным ландшафтом и собственной рекой. Атмосфера, которая сама настраивает на трансформацию.</p>
+      <div class="features">
+        <div class="feature"><div class="feature-title">Зал с балками</div><div class="feature-sub">для йоги и практик</div></div>
+        <div class="feature"><div class="feature-title">Терраса на крыше</div><div class="feature-sub">практика на воздухе</div></div>
+        <div class="feature"><div class="feature-title">Сауна</div><div class="feature-sub">восстановление</div></div>
+        <div class="feature"><div class="feature-title">Бассейн</div><div class="feature-sub">отдых между блоками</div></div>
+        <div class="feature"><div class="feature-title">Река и лес</div><div class="feature-sub">прогулки на природе</div></div>
+        <div class="feature"><div class="feature-title">Беседка с печью</div><div class="feature-sub">вечер у костра</div></div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="eyebrow">Программа</div>
+      <h2>Ритм <em>двух дней</em></h2>
+      <div class="divider"></div>
+
+      <div class="day-block">
+        <div class="day-head">
+          <span class="day-title">День 1</span>
+          <span class="day-time">заезд 16:00 · вечер</span>
+        </div>
+        <div class="day-items">
+          <div class="day-item"><div><div class="day-item-title">Сбор, заселение, знакомство</div><div class="day-item-desc">Размещение в замке, чай, настрой на ретрит</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Разминка + дыхательная практика</div><div class="day-item-desc">Суставная мобилизация, работа с дыханием</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Вечерний класс йоги</div><div class="day-item-desc">Лёгкая практика в зале с балками или на террасе</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Ужин в банкетном зале</div><div class="day-item-desc">Готовим и ужинаем вместе под руководством</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Танец раскрепощения</div><div class="day-item-desc">Авторский класс — раскрытие тела через движение</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Вечер у костра или сауна</div><div class="day-item-desc">Беседа, тепло, завершение дня в кругу</div></div></div>
+        </div>
+      </div>
+
+      <div class="day-block">
+        <div class="day-head">
+          <span class="day-title">День 2</span>
+          <span class="day-time">полный день · выезд 13:00</span>
+        </div>
+        <div class="day-items">
+          <div class="day-item"><div><div class="day-item-title">Утренняя практика</div><div class="day-item-desc">Гимнастика и дыхание, переходящие в йога-практику</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Прогулка с группой и Баронгом</div><div class="day-item-desc">Маршрут по лесу и территории у реки</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Плотный приём пищи</div><div class="day-item-desc">Основательный завтрак — готовим вместе</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Отдых</div><div class="day-item-desc">Бассейн, сауна, восстановление</div></div></div>
+          <div class="day-item"><div><div class="day-item-title">Сбор и отъезд</div><div class="day-item-desc">Завершение круга, выезд</div></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="pricing reveal">
+    <div class="wrap">
+      <div class="eyebrow">Стоимость участия</div>
+      <h2>Что <em>входит</em></h2>
+      <div class="divider"></div>
+      <ul class="included">
+        <li>Два дня программы с ночёвкой в замке</li>
+        <li>Йога, дыхательные, функциональные и силовые практики</li>
+        <li>Танец раскрепощения — авторский класс</li>
+        <li>Премиум-питание: меню под руководством нутрициолога</li>
+        <li>Доступ к залу, террасе, сауне, бассейну</li>
+        <li>Атмосфера малой группы и вечер у костра</li>
+      </ul>
+
+      <div class="formula">
+        <div class="formula-line">5 555 ₽ услуга &nbsp;+&nbsp; доля за дом &nbsp;+&nbsp; 2 444 ₽ питание</div>
+        <div class="formula-sub">замок 55 400 ₽ на группу · премиум-меню включено</div>
+      </div>
+
+      <table class="price-table">
+        <thead><tr><th>Группа</th><th>Дом / чел</th><th>Питание</th><th>Итого с человека</th></tr></thead>
+        <tbody>
+          <tr><td>8 человек</td><td>6 925 ₽</td><td>2 444 ₽</td><td>14 924 ₽</td></tr>
+          <tr><td>10 человек</td><td>5 540 ₽</td><td>2 444 ₽</td><td>13 539 ₽</td></tr>
+          <tr><td>12 человек</td><td>4 617 ₽</td><td>2 444 ₽</td><td>12 616 ₽</td></tr>
+        </tbody>
+      </table>
+      <p class="price-note">Чем больше группа — тем выгоднее каждому. Услуга и питание фиксированы, дом делится на всех.</p>
+    </div>
+  </section>
+
+  <div class="cta reveal" id="booking">
+    <div class="eyebrow" style="position:relative;">Следующий ретрит</div>
+    <h2>Готов к <em>трансформации?</em></h2>
+    <p>Места ограничены — до 12 человек. Напиши мне, и я расскажу подробности и подтвержу дату.</p>
+    <a class="btn" href="https://t.me/VladimirAkho" target="_blank" rel="noopener">Написать в Telegram →</a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">AkhoMethod</div>
+    <div class="footer-tag">Movement · Strength · Flow</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
