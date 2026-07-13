@@ -33,11 +33,11 @@
   .hero-sub strong { color: var(--white); font-weight: 400; }
 
   /* Three golden icons */
-  .pillars { display: flex; gap: clamp(24px, 6vw, 60px); justify-content: center; margin-bottom: 56px; position: relative; animation: fadeUp 1s 0.28s ease both; }
+  .pillars { display: flex; gap: clamp(18px, 4.5vw, 48px); justify-content: center; flex-wrap: wrap; margin-bottom: 56px; position: relative; animation: fadeUp 1s 0.28s ease both; }
   .pillar { display: flex; flex-direction: column; align-items: center; gap: 14px; }
   .pillar-icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
-  .pillar-icon svg { width: 40px; height: 40px; fill: none; stroke: var(--gold); stroke-width: 1.4; }
-  .pillar-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--gold-light); }
+  .pillar-icon svg { width: 38px; height: 38px; fill: none; stroke: var(--gold); stroke-width: 1.4; }
+  .pillar-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; color: var(--gold-light); white-space: nowrap; }
 
   .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--black); padding: 20px 48px; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; text-decoration: none; border-radius: 2px; transition: all 0.35s; position: relative; animation: fadeUp 1s 0.36s ease both; }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(201,168,76,0.25); }
@@ -90,7 +90,7 @@
   @media (max-width: 640px) {
     .benefit-grid { grid-template-columns: 1fr; }
     .formats { grid-template-columns: 1fr; }
-    .pillars { gap: 28px; }
+    .pillars { gap: 22px 26px; }
     .back { top: 16px; left: 16px; }
   }
 
@@ -105,6 +105,34 @@
   .music-btn.muted .wave1, .music-btn.muted .wave2 { display: none; }
   @media (max-width: 640px) { .music-btn { bottom: 18px; right: 18px; width: 46px; height: 46px; } }
 
+
+  /* Corporate yoga block */
+  .yoga { background: var(--black-soft); }
+  .yoga-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .yoga-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 4px; padding: 28px 26px; transition: all 0.3s; }
+  .yoga-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .yoga-card.highlight { background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.03)); border-color: var(--gold-dim); }
+  .yoga-card-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .yoga-card-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; color: var(--gold-light); margin-bottom: 10px; line-height: 1.25; }
+  .yoga-card p { font-size: 14px; color: var(--gray); line-height: 1.75; }
+
+  .yoga-prices { margin-top: 44px; border: 1px solid var(--card-border); border-radius: 4px; overflow: hidden; }
+  .prices-head { padding: 22px 26px; background: rgba(201,168,76,0.07); border-bottom: 1px solid var(--card-border); }
+  .prices-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; color: var(--gold-light); margin-bottom: 4px; }
+  .prices-note { font-size: 12px; color: var(--gray); }
+  .price-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 17px 26px; border-bottom: 1px solid rgba(201,168,76,0.10); transition: background 0.3s; }
+  .price-row:last-child { border-bottom: none; }
+  .price-row:hover { background: rgba(201,168,76,0.04); }
+  .price-row.featured { background: rgba(201,168,76,0.07); }
+  .pr-name { font-size: 15px; color: var(--white); }
+  .pr-val { font-size: 17px; color: var(--gold-light); font-weight: 500; text-align: right; white-space: nowrap; }
+  .pr-val small { display: block; font-size: 11px; color: var(--gray); font-weight: 300; margin-top: 2px; }
+  @media (max-width: 640px) {
+    .yoga-grid { grid-template-columns: 1fr; }
+    .price-row { padding: 15px 18px; }
+    .prices-head { padding: 18px; }
+  }
+
 </style>
 </head>
 <body>
@@ -115,15 +143,19 @@
     <img class="emblem" src="./emblem.png" alt="AkhoMethod">
     <div class="hero-eyebrow">AkhoMethod · для бизнеса</div>
     <h1>Корпоративное благополучие начинается с <em>состояния человека</em></h1>
-    <p class="hero-sub">AkhoMethod — система восстановления сотрудников через <strong>движение, дыхание и осознанность</strong>.</p>
+    <p class="hero-sub">AkhoMethod — система восстановления сотрудников через <strong>йогу, гимнастику, движение и дыхание</strong>.</p>
     <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="4.2" r="1.8"/><path d="M12 7v6M12 13l-4 7M12 13l4 7M6 9.5l6 1.5 6-1.5"/></svg></div>
+        <div class="pillar-name">Йога</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M4 8v8M20 8v8M7 6v12M17 6v12M7 12h10"/></svg></div>
+        <div class="pillar-name">Гимнастика</div>
+      </div>
       <div class="pillar">
         <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 3c0 4-4 5-4 9a4 4 0 008 0c0-4-4-5-4-9z"/><path d="M12 21v-4"/></svg></div>
         <div class="pillar-name">Дыхание</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon"><svg viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="1.6"/><path d="M11 9l-3 4 3 2 1 5M11 9l4-1 3 3M11 9l-4 1"/></svg></div>
-        <div class="pillar-name">Движение</div>
       </div>
       <div class="pillar">
         <div class="pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 4a5 5 0 00-3 9v3h6v-3a5 5 0 00-3-9z"/><path d="M9.5 20h5M10 22h4"/></svg></div>
@@ -139,7 +171,7 @@
       <div class="eyebrow">Что это</div>
       <h2>Метод для <em>современного человека</em></h2>
       <div class="divider"></div>
-      <p class="lead">AkhoMethod — авторская система Владимира Ахотелашвили, объединяющая функциональный тренинг, мобильность, дыхательные практики и восстановление.</p>
+      <p class="lead">AkhoMethod — авторская система Владимира Ахотелашвили, объединяющая <strong>йогу, гимнастику, функциональный и силовой тренинг, мобильность, дыхательные практики и восстановление</strong>.</p>
       <p class="lead">Метод создан для человека, который хочет <strong>сохранять здоровье, энергию и работоспособность</strong> в условиях постоянной нагрузки.</p>
     </section>
   </div>
@@ -166,13 +198,57 @@
       <h2>Как мы <em>работаем</em></h2>
       <div class="divider"></div>
       <div class="formats">
-        <div class="format"><div class="format-name">Корпоративные занятия</div><p>Групповые тренировки в вашем офисе или на площадке. Энергия и командный дух.</p></div>
+        <div class="format"><div class="format-name">Групповая йога</div><p>Регулярные занятия в студии рядом с офисом — утро, день или вечер. Первое занятие бесплатно.</p></div>
         <div class="format"><div class="format-name">Индивидуально</div><p>Персональная работа с руководителем и ключевыми сотрудниками.</p></div>
-        <div class="format"><div class="format-name">Групповые программы</div><p>Регулярные практики для отделов — движение, дыхание, восстановление.</p></div>
+        <div class="format"><div class="format-name">Практики в офисе</div><p>Короткие сессии прямо у вас — разминка, дыхание, снятие зажимов от сидячей работы.</p></div>
         <div class="format"><div class="format-name">Ретриты</div><p>Выезд за город для команды — тимбилдинг нового уровня в Замке Монсоро.</p></div>
       </div>
     </section>
   </div>
+
+
+  <section class="yoga reveal">
+    <div class="wrap">
+      <div class="eyebrow">Групповая йога</div>
+      <h2>Йога рядом с <em>вашим офисом</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Регулярные групповые занятия в студии <strong>ViVaDance</strong> у метро Автозаводская — в нескольких минутах от офиса. Сотрудники успевают перед работой, в обед или сразу после неё.</p>
+
+      <div class="yoga-grid">
+        <div class="yoga-card">
+          <div class="yoga-card-label">Формат</div>
+          <div class="yoga-card-title">Сила и мягкость</div>
+          <p>Смесь силовой аштанга-йоги и мягкой хатха-йоги. Плюс дыхательные практики — то, что снимает стресс и возвращает энергию.</p>
+        </div>
+        <div class="yoga-card">
+          <div class="yoga-card-label">Расписание</div>
+          <div class="yoga-card-title">Утро · День · Вечер</div>
+          <p>Группы в будни — утренние, дневные и вечерние. Время подбираем под удобство вашей команды.</p>
+        </div>
+        <div class="yoga-card">
+          <div class="yoga-card-label">Группа</div>
+          <div class="yoga-card-title">6–25 человек</div>
+          <p>Комфортный размер группы. Каждому — внимание и корректировка, при этом сохраняется командная энергия.</p>
+        </div>
+        <div class="yoga-card highlight">
+          <div class="yoga-card-label">Знакомство</div>
+          <div class="yoga-card-title">Первое занятие — бесплатно</div>
+          <p>Сотрудники пробуют без обязательств и сами оценивают эффект. Никакого риска для компании.</p>
+        </div>
+      </div>
+
+      <div class="yoga-prices">
+        <div class="prices-head">
+          <div class="prices-title">Стоимость</div>
+          <div class="prices-note">Оплачивает компания для сотрудников — или сотрудники самостоятельно</div>
+        </div>
+        <div class="price-row"><span class="pr-name">Разовое занятие</span><span class="pr-val">1 500 ₽</span></div>
+        <div class="price-row"><span class="pr-name">Абонемент · 4 занятия</span><span class="pr-val">5 000 ₽ <small>1 250 ₽ / занятие</small></span></div>
+        <div class="price-row"><span class="pr-name">Абонемент · 8 занятий</span><span class="pr-val">9 000 ₽ <small>1 125 ₽ / занятие</small></span></div>
+        <div class="price-row featured"><span class="pr-name">Абонемент · 12 занятий</span><span class="pr-val">12 000 ₽ <small>1 000 ₽ / занятие</small></span></div>
+      </div>
+    </div>
+  </section>
 
   <div class="cta reveal">
     <div class="eyebrow" style="position:relative;">Приглашение</div>
