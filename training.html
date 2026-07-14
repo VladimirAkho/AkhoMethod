@@ -119,6 +119,29 @@
     .back { top: 16px; left: 16px; }
     .price-val { font-size: 16px; }
   }
+
+  /* Music toggle button */
+  .music-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(10,9,6,0.85); backdrop-filter: blur(10px);
+    border: 1px solid rgba(201,168,76,0.4);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .music-btn:hover { border-color: #C9A84C; background: rgba(201,168,76,0.12); transform: scale(1.05); }
+  .music-btn svg { width: 22px; height: 22px; fill: none; stroke: #C9A84C; stroke-width: 1.6; }
+  /* Sound waves animation when playing */
+  .music-btn .wave { transform-origin: center; }
+  .music-btn.playing .wave1 { animation: soundwave 1.2s ease-in-out infinite; }
+  .music-btn.playing .wave2 { animation: soundwave 1.2s ease-in-out infinite 0.2s; }
+  @keyframes soundwave { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+  .music-btn .muted-line { display: none; }
+  .music-btn.muted .muted-line { display: block; }
+  .music-btn.muted .wave1, .music-btn.muted .wave2 { display: none; }
+  @media (max-width: 640px) { .music-btn { bottom: 18px; right: 18px; width: 46px; height: 46px; } .music-btn svg { width: 20px; height: 20px; } }
+
 </style>
 </head>
 <body>
@@ -252,7 +275,7 @@
     <div class="eyebrow" style="position:relative;">Начни сейчас</div>
     <h2>Первое занятие — <em>бесплатно</em></h2>
     <p>Напиши мне, и мы подберём формат под твою цель. Начнём с бесплатного знакомства.</p>
-    <a class="btn" href="https://t.me/VladimirAkho" target="_blank" rel="noopener">Написать в Telegram →</a>
+    <a class="btn" href="https://telegram.me/VladimirAkho" target="_blank" rel="noopener">Написать в Telegram →</a>
   </div>
 
   <footer>
@@ -266,5 +289,42 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
+
+  <!-- Ambient music -->
+  <audio id="akho-music" loop preload="none">
+    <source src="./music.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn muted" id="music-toggle" aria-label="Музыка" title="Музыка">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 9v6h4l5 4V5L8 9H4z"/>
+      <path class="wave wave1" d="M16 8.5a4 4 0 010 7"/>
+      <path class="wave wave2" d="M18.5 6a7 7 0 010 12"/>
+      <line class="muted-line" x1="3" y1="3" x2="21" y2="21" stroke="#C9A84C" stroke-width="1.6"/>
+    </svg>
+  </button>
+  <script>
+    (function(){
+      const audio = document.getElementById('akho-music');
+      const btn = document.getElementById('music-toggle');
+      audio.volume = 0.35;
+      // read stored preference: 'on' or 'off' (default off)
+      let pref = localStorage.getItem('akho-music-pref') || 'off';
+      function setPlaying(){ btn.classList.add('playing'); btn.classList.remove('muted'); }
+      function setMuted(){ btn.classList.remove('playing'); btn.classList.add('muted'); }
+      // Try to resume if user had it on
+      if (pref === 'on') {
+        const p = audio.play();
+        if (p) p.then(setPlaying).catch(()=>{ /* browser blocked; wait for tap */ setMuted(); });
+      } else { setMuted(); }
+      btn.addEventListener('click', function(){
+        if (audio.paused) {
+          audio.play().then(()=>{ setPlaying(); localStorage.setItem('akho-music-pref','on'); }).catch(()=>{});
+        } else {
+          audio.pause(); setMuted(); localStorage.setItem('akho-music-pref','off');
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
