@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мой метод — AkhoMethod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0A0906; --black-soft: #12100B;
+    --gold: #C9A84C; --gold-light: #E8C96D; --gold-dim: rgba(201,168,76,0.5);
+    --white: #F5F2EC; --gray: #B0AA9E;
+    --card: rgba(255,255,255,0.03); --card-border: rgba(201,168,76,0.18);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black); color: var(--white);
+    font-family: 'Inter', sans-serif; font-weight: 300;
+    overflow-x: hidden; line-height: 1.6;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* Back link */
+  .back {
+    position: absolute; top: 24px; left: 24px; z-index: 50;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    padding: 8px 14px; border: 1px solid var(--card-border);
+    border-radius: 2px; background: rgba(10,9,6,0.8); backdrop-filter: blur(8px);
+    transition: all 0.3s;
+  }
+  .back:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  /* Hero */
+  .hero {
+    min-height: 92vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    position: relative; padding: 80px 24px;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 30%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 6px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px; position: relative;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 9vw, 96px); font-weight: 500;
+    line-height: 0.95; margin-bottom: 24px; position: relative;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); display: block; }
+  .hero-sub {
+    font-size: clamp(15px, 2.5vw, 18px); color: var(--gray);
+    max-width: 480px; margin-bottom: 48px; position: relative;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 22px; line-height: 1.5;
+  }
+  .scroll-hint {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dim);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .scroll-hint::after {
+    content: ''; width: 1px; height: 40px;
+    background: linear-gradient(var(--gold), transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scaleY(1);} 50%{opacity:0.3;transform:scaleY(0.6);} }
+
+  /* Section */
+  section { padding: 90px 0; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 18px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 48px); font-weight: 500; line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  h2 em { font-style: italic; color: var(--gold-light); }
+  .divider { width: 56px; height: 1px; background: var(--gold); margin-bottom: 36px; }
+  p.lead { font-size: 17px; color: var(--gray); line-height: 1.9; margin-bottom: 20px; }
+  p.lead strong { color: var(--white); font-weight: 400; }
+
+  /* Three pillars */
+  .pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--card-border); margin: 56px 0;
+    border: 1px solid var(--card-border);
+  }
+  .pillar {
+    background: var(--black); padding: 40px 28px; text-align: center;
+    transition: background 0.4s;
+  }
+  .pillar:hover { background: var(--black-soft); }
+  .pillar-mark {
+    font-family: 'Cormorant Garamond', serif; font-size: 40px;
+    color: var(--gold); margin-bottom: 14px; font-style: italic;
+  }
+  .pillar h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 24px;
+    font-weight: 500; margin-bottom: 12px; color: var(--white);
+  }
+  .pillar p { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+  /* Journey */
+  .journey { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+  .journey-item {
+    display: grid; grid-template-columns: 140px 1fr; gap: 28px;
+    padding: 26px 0; border-top: 1px solid var(--card-border); align-items: baseline;
+  }
+  .journey-item:last-child { border-bottom: 1px solid var(--card-border); }
+  .journey-label {
+    font-family: 'Cormorant Garamond', serif; font-size: 20px;
+    font-style: italic; color: var(--gold-light);
+  }
+  .journey-text { font-size: 15px; color: var(--gray); line-height: 1.7; }
+
+  /* Quote block */
+  .quote {
+    text-align: center; padding: 80px 24px; margin: 40px 0;
+    border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);
+    position: relative;
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3.5vw, 32px); font-style: italic;
+    line-height: 1.5; color: var(--gold-light); max-width: 620px; margin: 0 auto;
+  }
+
+  /* CTA */
+  .cta { text-align: center; padding: 100px 24px; position: relative; }
+  .cta::before {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta h2 { position: relative; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold); color: var(--black);
+    padding: 17px 40px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; border-radius: 2px;
+    transition: all 0.3s; margin-top: 32px; position: relative;
+  }
+  .btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  footer {
+    text-align: center; padding: 48px 24px;
+    border-top: 1px solid var(--card-border);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 22px;
+    color: var(--gold-light); font-style: italic; margin-bottom: 10px;
+  }
+  .footer-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-dim); }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s, transform 0.8s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { animation: none !important; }
+  }
+
+  @media (max-width: 640px) {
+    .pillars { grid-template-columns: 1fr; }
+    .journey-item { grid-template-columns: 1fr; gap: 6px; }
+    .back { top: 16px; left: 16px; }
+  }
+
+  .emblem-showcase { display: flex; justify-content: center; margin: 48px 0 56px; }
+  .emblem-large { width: min(320px, 80vw); height: auto; filter: drop-shadow(0 0 30px rgba(201,168,76,0.25)); animation: breathe 6s ease-in-out infinite; }
+  @keyframes breathe { 0%,100%{transform:scale(1);} 50%{transform:scale(1.03);} }
+  .symbols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .symbol-item { background: var(--card); border: 1px solid var(--card-border); border-radius: 3px; padding: 28px 26px; transition: all 0.3s; }
+  .symbol-item:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .symbol-mark { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; color: var(--gold-light); margin-bottom: 12px; }
+  .symbol-item p { font-size: 14px; color: var(--gray); line-height: 1.75; }
+  @media (max-width: 640px) { .symbols { grid-template-columns: 1fr; } }
+
+
+  /* Music toggle button */
+  .music-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(10,9,6,0.85); backdrop-filter: blur(10px);
+    border: 1px solid rgba(201,168,76,0.4);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .music-btn:hover { border-color: #C9A84C; background: rgba(201,168,76,0.12); transform: scale(1.05); }
+  .music-btn svg { width: 22px; height: 22px; fill: none; stroke: #C9A84C; stroke-width: 1.6; }
+  /* Sound waves animation when playing */
+  .music-btn .wave { transform-origin: center; }
+  .music-btn.playing .wave1 { animation: soundwave 1.2s ease-in-out infinite; }
+  .music-btn.playing .wave2 { animation: soundwave 1.2s ease-in-out infinite 0.2s; }
+  @keyframes soundwave { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+  .music-btn .muted-line { display: none; }
+  .music-btn.muted .muted-line { display: block; }
+  .music-btn.muted .wave1, .music-btn.muted .wave2 { display: none; }
+  @media (max-width: 640px) { .music-btn { bottom: 18px; right: 18px; width: 46px; height: 46px; } .music-btn svg { width: 20px; height: 20px; } }
+
+
+  /* Кто я — stats and credentials */
+  .stats-row { display: flex; gap: 16px; margin: 40px 0 36px; }
+  .stat { flex: 1; text-align: center; padding: 24px 12px; background: var(--card); border: 1px solid var(--card-border); border-radius: 4px; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 48px); font-weight: 600; color: var(--gold-light); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--gray); margin-top: 8px; letter-spacing: 0.3px; }
+  .creds-list { display: flex; flex-direction: column; gap: 2px; }
+  .cred { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: var(--card); border: 1px solid var(--card-border); border-radius: 2px; font-size: 14px; color: var(--white); transition: all 0.3s; }
+  .cred::before { content: '✦'; color: var(--gold); flex-shrink: 0; }
+  .cred:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+
+  .stats-row.single { justify-content: center; }
+  .stats-row.single .stat { flex: 0 0 auto; min-width: 240px; }
+  @media (max-width: 640px) {
+    .stats-row { flex-direction: column; gap: 12px; }
+    .stat { padding: 18px; }
+  }
+
+
+  /* AkhoMethod 2.0 */
+  .dragon-flow { display:grid; grid-template-columns:1.05fr .95fr; gap:24px; align-items:stretch; margin-top:38px; }
+  .dragon-flow-main,.dragon-flow-note { border:1px solid var(--card-border); background:var(--card); padding:34px 30px; }
+  .dragon-flow-main h3 { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:500; color:var(--gold-light); margin-bottom:14px; }
+  .dragon-flow-main p,.dragon-flow-note p { color:var(--gray); font-size:15px; line-height:1.85; }
+  .dragon-flow-note { display:flex; align-items:center; background:radial-gradient(circle at 70% 30%,rgba(201,168,76,.10),transparent 60%),var(--black-soft); }
+  .dragon-flow-note p { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:var(--gold-light); }
+  .symbol-item p { color:#B0AA9E; }
+  @media(max-width:640px){ .dragon-flow{grid-template-columns:1fr;} .dragon-flow-main,.dragon-flow-note{padding:26px 22px;} }
+
+
+  /* Final mobile polish — AkhoMethod 2.0 */
+  section { padding: 72px 0; }
+  section > .eyebrow,
+  section > h2 { text-align: center; }
+  section > .divider { margin-left: auto; margin-right: auto; margin-bottom: 30px; }
+  .hero { min-height: 84vh; padding: 92px 24px 72px; }
+  .hero-eyebrow { margin-bottom: 22px; }
+  .hero h1 { margin-bottom: 20px; }
+  .hero-sub { margin-bottom: 38px; }
+  .scroll-hint { bottom: 24px; }
+  .pillars { margin: 40px 0 18px; }
+  .quote { padding: 56px 24px; margin: 20px 0; }
+  .journey { margin-top: 30px; }
+  .stats-row { margin: 30px 0 24px; }
+  .creds-list { gap: 8px; }
+  .cred { padding: 13px 16px; }
+  .emblem-showcase { margin: 34px 0 38px; }
+  .symbols { margin-top: 30px; gap: 14px; }
+  .symbol-item { padding: 24px 22px; }
+  .dragon-flow { margin-top: 28px; gap: 16px; }
+  .dragon-flow-main, .dragon-flow-note { padding: 28px 24px; }
+  .cta { padding: 72px 24px; }
+  .music-btn { width: 46px; height: 46px; right: 16px; bottom: 18px; opacity: .92; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 22px; }
+    .hero { min-height: 78vh; padding: 86px 22px 62px; }
+    .hero::before { width: 440px; height: 440px; top: 28%; }
+    .hero-eyebrow { letter-spacing: 4px; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(46px, 13vw, 66px); line-height: .98; }
+    .hero-sub { font-size: 19px; line-height: 1.45; max-width: 520px; margin-bottom: 26px; }
+    .scroll-hint { bottom: 18px; }
+
+    section { padding: 54px 0; }
+    .eyebrow { letter-spacing: 4px; margin-bottom: 14px; }
+    h2 { font-size: clamp(34px, 10vw, 44px); margin-bottom: 22px; }
+    section > .divider { margin-bottom: 26px; }
+    p.lead { font-size: 16px; line-height: 1.78; margin-bottom: 17px; }
+
+    .pillars { margin: 30px 0 8px; }
+    .pillar { padding: 30px 22px; }
+    .pillar-mark { font-size: 36px; margin-bottom: 10px; }
+    .pillar h3 { font-size: 25px; margin-bottom: 8px; }
+
+    .dragon-flow { margin-top: 24px; gap: 12px; }
+    .dragon-flow-main, .dragon-flow-note { padding: 24px 20px; }
+    .dragon-flow-main h3 { font-size: 30px; line-height: 1.12; }
+    .dragon-flow-note p { font-size: 22px; line-height: 1.45; }
+
+    .quote { padding: 46px 18px; margin: 8px 0; }
+    .quote-text { font-size: 25px; line-height: 1.5; }
+
+    .journey { margin-top: 22px; }
+    .journey-item { padding: 20px 0; gap: 4px; }
+    .journey-label { font-size: 22px; }
+    .journey-text { font-size: 15px; line-height: 1.65; }
+
+    #about h2 { font-size: clamp(34px, 9.5vw, 42px); }
+    .stats-row { margin: 24px 0 18px; gap: 10px; }
+    .stat { padding: 16px 12px; }
+    .stat-label { font-size: 11.5px; }
+    .cred { padding: 12px 14px; font-size: 13.5px; line-height: 1.55; }
+
+    .emblem-showcase { margin: 28px 0 30px; }
+    .emblem-large { width: min(300px, 82vw); }
+    .symbols { margin-top: 24px; gap: 12px; }
+    .symbol-item { padding: 22px 18px; }
+    .symbol-mark { font-size: 27px; margin-bottom: 8px; }
+    .symbol-item p { font-size: 13.5px; line-height: 1.65; }
+
+    .cta { padding: 58px 22px 66px; }
+    .cta h2 { font-size: clamp(34px, 10vw, 44px); }
+    .btn { width: 100%; justify-content: center; padding: 16px 20px; margin-top: 24px; }
+    footer { padding: 36px 22px; }
+
+    .music-btn { width: 44px; height: 44px; right: 12px; bottom: 14px; }
+  }
+
+</style>
+</head>
+<body>
+  <a class="back" href="./index.html">← Назад</a>
+
+  <div class="hero">
+    <div class="hero-eyebrow">Метод движения и трансформации</div>
+    <h1>Не тренировка.<em>Система.</em></h1>
+    <p class="hero-sub">Сила, движение, дыхание и осознанность — не отдельные практики, а части одной живой системы.</p>
+    <div class="scroll-hint">Читать</div>
+  </div>
+
+  <div class="wrap">
+    <section class="reveal">
+      <div class="eyebrow">Что такое AkhoMethod</div>
+      <h2>Тело — это <em>система</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Когда движение, сила, питание и восстановление работают вместе, происходит настоящая трансформация — <strong>не за счёт изматывания, а через точную нагрузку, осознанность и баланс</strong>.</p>
+      <p class="lead">AkhoMethod — живая практика, где сила и мобильность, движение и внимание, нагрузка и восстановление идут рядом. Я соединяю то, что часто показывают порознь: йогу, силовую работу, дыхание, танец и питание.</p>
+    </section>
+
+    <section class="reveal">
+      <div class="eyebrow">Три опоры</div>
+      <h2>На чём <em>стоит</em> метод</h2>
+      <div class="divider"></div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-mark">I</div>
+          <h3>Сила</h3>
+          <p>Силовая и функциональная работа, мобильность и восстановление. Сила без ненужной жёсткости.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark">II</div>
+          <h3>Движение</h3>
+          <p>Координация, пластика, танец и поток. Тело учится решать сложные задачи через движение.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark">III</div>
+          <h3>Сознание</h3>
+          <p>Дыхание, внимание и управление состоянием. Чем лучше чувствуешь тело, тем точнее управляешь собой.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal" id="dragon-flow">
+      <div class="eyebrow">Авторское направление</div>
+      <h2>Dragon <em>Flow</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Dragon Flow вырос внутри AkhoMethod из танца, координации, пластики, дыхания и силовой базы. Это практика, в которой сложное движение становится способом развивать контроль, свободу и присутствие.</p>
+      <div class="dragon-flow">
+        <div class="dragon-flow-main"><h3>Сила · Пластика · Контроль</h3><p>Не копировать форму движения, а находить его качество в своём теле. Не зажиматься ради контроля, а становиться точнее и свободнее.</p></div>
+        <div class="dragon-flow-note"><p>«Осваивая сложное движение, ты учишься управлять не только телом, но и своим состоянием.»</p></div>
+      </div>
+    </section>
+
+    <div class="quote reveal">
+      <p class="quote-text">«Я не иду по чужому пути.<br>Я создаю свой. И каждый мой шаг становится частью пути тех, кто идёт рядом.»</p>
+    </div>
+
+    <section class="reveal">
+      <div class="eyebrow">Мой путь</div>
+      <h2>Почему я не верю в <em>одну систему</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Я прошёл через весь спектр — и это дало мне понимание, которого не найти в книгах: <strong>универсального рецепта нет, есть твоя система, которую нужно найти</strong>.</p>
+      <div class="journey">
+        <div class="journey-item">
+          <div class="journey-label">Растительное</div>
+          <div class="journey-text">Вегетарианство, веганство, сыроедение — годы практики и наблюдения за телом.</div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-label">Голодания</div>
+          <div class="journey-text">Практики голодания и интервальное питание — личный опыт наблюдения за реакциями организма и режимом питания.</div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-label">Жировые</div>
+          <div class="journey-text">Keto, LCHF и другие низкоуглеводные подходы — опыт разных моделей питания и их влияния на самочувствие.</div>
+        </div>
+        <div class="journey-item">
+          <div class="journey-label">Синтез</div>
+          <div class="journey-text">Пришёл к своему — гибкий подход, который подбираю индивидуально под каждого.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal" id="about">
+      <div class="eyebrow">Кто я</div>
+      <h2>Владимир <em>Ахотелашвили</em></h2>
+      <div class="divider"></div>
+      <p class="lead"><strong>Создатель AkhoMethod. Тренер, нутрициолог и практик движения и йоги.</strong> Более 25 лет я исследую движение через хореографию, единоборства, силовой спорт, бодибилдинг, йогу, дыхание и танец; более 7 лет работаю с людьми.</p>
+      <p class="lead">Сегодня я соединяю этот опыт в одну систему, чтобы человек становился сильнее, свободнее двигался, лучше чувствовал тело и мог выстраивать устойчивую практику под свою жизнь.</p>
+
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">25+</div><div class="stat-label">лет в движении</div></div>
+        <div class="stat"><div class="stat-num">7+</div><div class="stat-label">лет опыта работы с людьми</div></div>
+      </div>
+
+      <div class="creds-list">
+        <div class="cred">КМС по становой тяге · личный рекорд 240 кг</div>
+        <div class="cred">Полуфиналист чемпионата Москвы по бодибилдингу (2016)</div>
+        <div class="cred">Сертифицированный тренер по фитнесу и бодибилдингу</div>
+        <div class="cred">Диплом нутрициолога · Международная Академия нутрициологии</div>
+        <div class="cred">Дыхательные практики · 4–5 лет постоянной практики</div>
+        <div class="cred">База движения: хореография, единоборства, танец, йога</div>
+        <div class="cred">Опыт с людьми разных возрастов и уровней подготовки</div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="eyebrow">Символ метода</div>
+      <h2>Что скрыто в <em>эмблеме</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Эмблема AkhoMethod — визуальный язык метода. Каждый элемент отражает одну из его ключевых идей.</p>
+      <div class="emblem-showcase">
+        <img class="emblem-large" src="./emblem.png" alt="Эмблема AkhoMethod">
+      </div>
+      <div class="symbols">
+        <div class="symbol-item">
+          <div class="symbol-mark">Дракон</div>
+          <p>Не символ агрессии, а пробуждённая жизненная сила. Не сила против кого-то — а сила управлять собой.</p>
+        </div>
+        <div class="symbol-item">
+          <div class="symbol-mark">Жезл</div>
+          <p>Позвоночник, ось тела и внутренняя дисциплина — центр, вокруг которого выстраиваются движение и внимание.</p>
+        </div>
+        <div class="symbol-item">
+          <div class="symbol-mark">Лотос</div>
+          <p>Образ развития: опора, прохождение через сложность и постепенное раскрытие. Сила развивается вместе с осознанностью.</p>
+        </div>
+        <div class="symbol-item">
+          <div class="symbol-mark">Геометрия</div>
+          <p>Целостность: тело, дыхание, движение, эмоции и внимание влияют друг на друга и работают как система.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:44px;">
+        <a class="btn" href="./philosophy.html" style="display:inline-flex; align-items:center; gap:12px; background:var(--gold); color:var(--black); padding:16px 40px; font-size:12px; letter-spacing:3px; text-transform:uppercase; font-weight:500; text-decoration:none; border-radius:2px;">Полная философия символа →</a>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="cta reveal">
+    <div class="eyebrow" style="position:relative;">Следующий шаг</div>
+    <h2>Начни с тела. <em>Изменится больше, чем тело.</em></h2>
+    <a class="btn" href="https://telegram.me/VladimirAkho" target="_blank" rel="noopener">Написать Владимиру →</a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">AkhoMethod</div>
+    <div class="footer-tag">Movement · Strength · Flow</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+  <!-- Ambient music -->
+  <audio id="akho-music" loop preload="none">
+    <source src="./music.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn muted" id="music-toggle" aria-label="Музыка" title="Музыка">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 9v6h4l5 4V5L8 9H4z"/>
+      <path class="wave wave1" d="M16 8.5a4 4 0 010 7"/>
+      <path class="wave wave2" d="M18.5 6a7 7 0 010 12"/>
+      <line class="muted-line" x1="3" y1="3" x2="21" y2="21" stroke="#C9A84C" stroke-width="1.6"/>
+    </svg>
+  </button>
+  <script>
+    (function(){
+      const audio = document.getElementById('akho-music');
+      const btn = document.getElementById('music-toggle');
+      audio.volume = 0.35;
+      // read stored preference: 'on' or 'off' (default off)
+      let pref = localStorage.getItem('akho-music-pref') || 'off';
+      function setPlaying(){ btn.classList.add('playing'); btn.classList.remove('muted'); }
+      function setMuted(){ btn.classList.remove('playing'); btn.classList.add('muted'); }
+      // Try to resume if user had it on
+      if (pref === 'on') {
+        const p = audio.play();
+        if (p) p.then(setPlaying).catch(()=>{ /* browser blocked; wait for tap */ setMuted(); });
+      } else { setMuted(); }
+      btn.addEventListener('click', function(){
+        if (audio.paused) {
+          audio.play().then(()=>{ setPlaying(); localStorage.setItem('akho-music-pref','on'); }).catch(()=>{});
+        } else {
+          audio.pause(); setMuted(); localStorage.setItem('akho-music-pref','off');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
