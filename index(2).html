@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AkhoMethod — Владимир Ахотелашвили</title>
+<meta name="description" content="AkhoMethod — движение, сила, дыхание, йога и осознанное питание в одной системе. Владимир Ахотелашвили.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0A0906;--soft:#12100B;--gold:#C9A84C;--gold2:#E8C96D;--white:#F5F2EC;--gray:#B0AA9E;--line:rgba(201,168,76,.22);--card:rgba(255,255,255,.035)}
+html{scroll-behavior:smooth}body{background:var(--black);color:var(--white);font-family:Inter,sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden}
+a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}.serif{font-family:'Cormorant Garamond',serif}.gold{color:var(--gold2)}
+.frame{position:fixed;inset:16px;pointer-events:none;z-index:20}.frame i{position:absolute;width:26px;height:26px;border:1px solid rgba(201,168,76,.38)}.frame i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}.frame i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}.frame i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}.frame i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:54px;padding:78px 0 68px;position:relative}.hero:before{content:"";position:absolute;width:720px;height:720px;left:-260px;top:-220px;background:radial-gradient(circle,rgba(201,168,76,.10),transparent 64%);pointer-events:none}
+.brandline{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}.brand{font-family:'Cormorant Garamond',serif;font-size:clamp(58px,8vw,104px);line-height:.9;font-weight:500;margin-bottom:20px}.brand em{font-style:italic;color:var(--gold2)}
+.hero h2{font-family:'Cormorant Garamond',serif;font-size:clamp(31px,4vw,52px);line-height:1.05;font-weight:500;max-width:650px;margin-bottom:18px}.hero-copy{font-size:17px;color:var(--gray);max-width:620px;margin-bottom:30px}.hero-copy strong{color:var(--white);font-weight:400}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border:1px solid var(--line);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:.3s}.btn.primary{background:var(--gold);color:var(--black);border-color:var(--gold)}.btn:hover{transform:translateY(-2px);border-color:var(--gold2)}.btn.primary:hover{background:var(--gold2)}
+.mantra{display:flex;gap:24px;flex-wrap:wrap;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.visual{position:relative;min-height:620px;display:flex;align-items:center;justify-content:center;padding:28px 20px}.visual:before{content:"";position:absolute;width:500px;height:500px;border:1px solid rgba(201,168,76,.14);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 72px rgba(201,168,76,.07);pointer-events:none}.portrait{width:min(96%,500px);aspect-ratio:1/1;object-fit:cover;object-position:50% 48%;border-radius:50%;border:1px solid rgba(201,168,76,.32);box-shadow:0 22px 72px rgba(0,0,0,.52),0 0 48px rgba(201,168,76,.10);position:relative;z-index:2}
+section{padding:96px 0;border-top:1px solid rgba(201,168,76,.10)}.eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}.title{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,58px);line-height:1.05;font-weight:500;margin-bottom:18px}.lead{font-size:16px;color:var(--gray);max-width:760px}.lead strong{color:var(--white);font-weight:400}.divider{width:58px;height:1px;background:var(--gold);margin:26px 0 36px}
+.retreat{padding:26px;border:1px solid var(--gold);background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.03));display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;text-decoration:none;transition:.3s}.retreat:hover{transform:translateY(-2px);background:rgba(201,168,76,.11)}.retreat h3{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold2);font-weight:500}.retreat p{color:var(--gray);font-size:14px}.retreat .arrow{font-size:28px;color:var(--gold)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}.card{background:var(--card);border:1px solid var(--line);padding:30px 26px;min-height:210px;transition:.3s}.card:hover{border-color:var(--gold);transform:translateY(-3px)}.num{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--gold);font-style:italic;margin-bottom:18px}.card h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;margin-bottom:10px}.card p{color:var(--gray);font-size:14px}
+.dragon{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}.dragon-box{border:1px solid var(--line);padding:42px;background:radial-gradient(circle at 70% 30%,rgba(201,168,76,.12),transparent 52%),var(--soft);min-height:360px;display:flex;flex-direction:column;justify-content:center}.dragon-box .big{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,76px);font-style:italic;color:var(--gold2);line-height:.95;margin-bottom:20px}.dragon-box p{color:var(--gray);font-size:15px}.quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.4vw,38px);line-height:1.4;font-style:italic;color:var(--gold2);margin-top:26px}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:40px}.work{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px;border:1px solid var(--line);text-decoration:none;background:var(--card);transition:.3s}.work:hover{border-color:var(--gold);background:rgba(201,168,76,.055)}.work h3{font-size:18px;font-weight:400}.work span{font-size:13px;color:var(--gray);display:block;margin-top:4px}.work b{color:var(--gold);font-weight:400}
+.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:start}.stats{display:grid;gap:12px}.stat{border:1px solid var(--line);padding:26px;text-align:center}.stat strong{display:block;font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold2);line-height:1}.stat span{font-size:12px;color:var(--gray);letter-spacing:1px}.about p{color:var(--gray);font-size:16px;margin-bottom:18px}.about p strong{color:var(--white);font-weight:400}
+.contact{text-align:center}.contact .title{max-width:800px;margin-left:auto;margin-right:auto}.contact .lead{margin:0 auto 30px}.socials{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.socials a{text-decoration:none;border:1px solid var(--line);padding:12px 18px;font-size:13px;color:var(--gray)}.socials a:hover{color:var(--white);border-color:var(--gold)}
+footer{text-align:center;padding:42px 20px 70px;color:rgba(201,168,76,.55);font-size:10px;letter-spacing:4px;text-transform:uppercase}
+.music-btn{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:30;width:44px;height:44px;border-radius:50%;background:rgba(10,9,6,.82);border:1px solid rgba(201,168,76,.38);display:flex;align-items:center;justify-content:center;cursor:pointer}.music-btn svg{width:19px;height:19px;fill:none;stroke:var(--gold);stroke-width:1.6}.music-btn .muted-line{display:none}.music-btn.muted .muted-line{display:block}.music-btn.muted .wave1,.music-btn.muted .wave2{display:none}
+.reveal{opacity:0;transform:translateY(20px);transition:.8s}.reveal.visible{opacity:1;transform:none}
+@media(max-width:820px){.wrap{width:min(100% - 32px,720px)}.hero{grid-template-columns:1fr;padding-top:64px;gap:24px}.visual{min-height:auto;order:-1;padding:24px 0 8px}.visual:before{width:min(74vw,390px);height:min(74vw,390px)}.portrait{width:min(72vw,390px);object-position:50% 48%}.hero-copy{font-size:15px}.grid3,.work-grid,.dragon,.about{grid-template-columns:1fr}.grid3{gap:10px}.card{min-height:0}.dragon-box{min-height:0;padding:30px}.retreat{grid-template-columns:1fr auto}section{padding:72px 0}.about{gap:24px}}
+@media(max-width:480px){.brand{font-size:60px}.hero h2{font-size:34px}.actions .btn{width:100%}.mantra{gap:10px 18px}.visual{padding-top:18px}.visual:before{width:80vw;height:80vw}.portrait{width:78vw;max-width:360px}.retreat h3{font-size:25px}.work-grid{grid-template-columns:1fr}.work{padding:20px}.frame{inset:10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="frame"><i></i><i></i><i></i><i></i></div>
+<main>
+  <div class="wrap">
+    <section class="hero" style="border-top:0">
+      <div class="hero-copy-block reveal">
+        <div class="brandline">Метод движения и трансформации</div>
+        <h1 class="brand">Akho<em>Method</em></h1>
+        <h2>Сильное. Свободное. <span class="gold">Живое тело.</span></h2>
+        <p class="hero-copy"><strong>Йога, силовая работа, дыхание, движение и осознанное питание</strong> — в одной системе, которая подстраивается под человека, а не наоборот.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://telegram.me/VladimirAkho" target="_blank" rel="noopener">Работать со мной →</a>
+          <a class="btn" href="./method.html">Узнать метод</a>
+        </div>
+        <div class="mantra"><span>Movement</span><span>Strength</span><span>Flow</span></div>
+      </div>
+      <div class="visual reveal">
+        <img class="portrait" src="./vladimir-hero.png" alt="Владимир Ахотелашвили — AkhoMethod">
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap reveal" style="padding-bottom:24px">
+    <a class="retreat" href="./retreat.html">
+      <div><h3>Ретрит в Замке Монсоро</h3><p>Два дня трансформации · Подмосковье</p></div><div class="arrow">→</div>
+    </a>
+  </div>
+
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">Что такое AkhoMethod</div>
+      <h2 class="title">Не тренировка. <span class="gold">Система.</span></h2>
+      <div class="divider"></div>
+      <p class="lead">AkhoMethod соединяет то, что обычно существует отдельно: <strong>силу, мобильность, йогу, дыхание, движение, восстановление и питание.</strong> Цель — не измотать тело, а сделать его сильнее, свободнее и устойчивее.</p>
+      <div class="grid3">
+        <div class="card"><div class="num">I</div><h3>Сила</h3><p>Силовая и функциональная работа, мобильность, восстановление. Сила без ненужной жёсткости.</p></div>
+        <div class="card"><div class="num">II</div><h3>Движение</h3><p>Координация, пластика, танец и поток. Тело учится решать сложные задачи через движение.</p></div>
+        <div class="card"><div class="num">III</div><h3>Сознание</h3><p>Дыхание, внимание и управление состоянием. Чем лучше чувствуешь тело, тем точнее управляешь собой.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dragon-flow">
+    <div class="wrap dragon reveal">
+      <div>
+        <div class="eyebrow">Авторское направление</div>
+        <h2 class="title">Dragon <span class="gold">Flow</span></h2>
+        <div class="divider"></div>
+        <p class="lead">Сила без зажатости. Пластика без слабости. Контроль без скованности.</p>
+        <p class="quote">«Осваивая сложное движение, ты учишься управлять не только телом, но и своим состоянием.»</p>
+        <div class="actions" style="margin-top:28px;margin-bottom:0"><a class="btn" href="./method.html#dragon-flow">Подробнее →</a></div>
+      </div>
+      <div class="dragon-box"><div class="big">Flow</div><p>Dragon Flow вырос из танца, координации, пластики, дыхания и силовой базы. Это не отдельная “магия”, а живой язык движения внутри AkhoMethod.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap reveal">
+      <div class="eyebrow">Форматы</div>
+      <h2 class="title">Как можно <span class="gold">работать со мной</span></h2>
+      <div class="divider"></div>
+      <div class="work-grid">
+        <a class="work" href="./training.html"><div><h3>Персональные тренировки</h3><span>Сила · мобильность · йога · питание</span></div><b>→</b></a>
+        <a class="work" href="./training.html"><div><h3>Онлайн-сопровождение</h3><span>Программа, контроль и корректировки</span></div><b>→</b></a>
+        <a class="work" href="./method.html#dragon-flow"><div><h3>Dragon Flow</h3><span>Движение · пластика · координация</span></div><b>→</b></a>
+        <a class="work" href="./business.html"><div><h3>Для бизнеса</h3><span>Корпоративное благополучие</span></div><b>→</b></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap about reveal">
+      <div class="stats"><div class="stat"><strong>25+</strong><span>лет в движении</span></div><div class="stat"><strong>7+</strong><span>лет работы с людьми</span></div></div>
+      <div><div class="eyebrow">Кто я</div><h2 class="title">Владимир <span class="gold">Ахотелашвили</span></h2><div class="divider"></div><p><strong>Создатель AkhoMethod. Тренер, нутрициолог и практик движения и йоги.</strong></p><p>Более 25 лет я исследую движение через хореографию, единоборства, силовой спорт, бодибилдинг, йогу, дыхание и танец. Этот опыт стал основой метода, который я сегодня применяю в работе с людьми.</p><div class="actions" style="margin:26px 0 0"><a class="btn" href="./method.html#about">Мой путь →</a></div></div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap reveal"><div class="eyebrow">Следующий шаг</div><h2 class="title">Начни с тела. <span class="gold">Изменится больше, чем тело.</span></h2><p class="lead">Если хочешь понять, какой формат подойдёт именно тебе — напиши. Начнём с цели, состояния и реальной точки, в которой ты находишься сейчас.</p><div class="actions" style="justify-content:center"><a class="btn primary" href="https://telegram.me/VladimirAkho" target="_blank" rel="noopener">Написать в Telegram →</a></div><div class="socials"><a href="https://instagram.com/vladimir_akho" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/79858822455" target="_blank" rel="noopener">WhatsApp</a><a href="tel:+79858822455">+7 985 882-24-55</a></div></div>
+  </section>
+</main>
+<footer>AkhoMethod · Movement · Strength · Flow</footer>
+<audio id="akho-music" loop preload="none"><source src="./music.mp3" type="audio/mpeg"></audio>
+<button class="music-btn muted" id="music-toggle" aria-label="Музыка"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave1" d="M16 8.5a4 4 0 010 7"/><path class="wave2" d="M18.5 6a7 7 0 010 12"/><line class="muted-line" x1="3" y1="3" x2="21" y2="21"/></svg></button>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+(function(){const a=document.getElementById('akho-music'),b=document.getElementById('music-toggle');a.volume=.28;const off=()=>{b.classList.add('muted')},on=()=>{b.classList.remove('muted')};off();b.addEventListener('click',()=>{if(a.paused){a.play().then(on).catch(off)}else{a.pause();off()}})})();
+</script>
+</body></html>
