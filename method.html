@@ -11,7 +11,7 @@
   :root {
     --black: #0A0906; --black-soft: #12100B;
     --gold: #C9A84C; --gold-light: #E8C96D; --gold-dim: rgba(201,168,76,0.5);
-    --white: #F5F2EC; --gray: #9a9488;
+    --white: #F5F2EC; --gray: #B0AA9E;
     --card: rgba(255,255,255,0.03); --card-border: rgba(201,168,76,0.18);
   }
   html { scroll-behavior: smooth; }
@@ -24,7 +24,7 @@
 
   /* Back link */
   .back {
-    position: fixed; top: 24px; left: 24px; z-index: 50;
+    position: absolute; top: 24px; left: 24px; z-index: 50;
     display: flex; align-items: center; gap: 8px;
     font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
     color: var(--gold); text-decoration: none;
@@ -230,15 +230,25 @@
     .stat { padding: 18px; }
   }
 
+
+  /* AkhoMethod 2.0 */
+  .dragon-flow { display:grid; grid-template-columns:1.05fr .95fr; gap:24px; align-items:stretch; margin-top:38px; }
+  .dragon-flow-main,.dragon-flow-note { border:1px solid var(--card-border); background:var(--card); padding:34px 30px; }
+  .dragon-flow-main h3 { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:500; color:var(--gold-light); margin-bottom:14px; }
+  .dragon-flow-main p,.dragon-flow-note p { color:var(--gray); font-size:15px; line-height:1.85; }
+  .dragon-flow-note { display:flex; align-items:center; background:radial-gradient(circle at 70% 30%,rgba(201,168,76,.10),transparent 60%),var(--black-soft); }
+  .dragon-flow-note p { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:var(--gold-light); }
+  .symbol-item p { color:#B0AA9E; }
+  @media(max-width:640px){ .dragon-flow{grid-template-columns:1fr;} .dragon-flow-main,.dragon-flow-note{padding:26px 22px;} }
 </style>
 </head>
 <body>
   <a class="back" href="./index.html">← Назад</a>
 
   <div class="hero">
-    <div class="hero-eyebrow">Метод трансформации</div>
+    <div class="hero-eyebrow">Метод движения и трансформации</div>
     <h1>Не тренировка.<em>Система.</em></h1>
-    <p class="hero-sub">«Стою в своей силе. Вижу путь чётко. Моё сердце открыто. Огонь под контролем.»</p>
+    <p class="hero-sub">Сила, движение, дыхание и осознанность — не отдельные практики, а части одной живой системы.</p>
     <div class="scroll-hint">Читать</div>
   </div>
 
@@ -247,8 +257,8 @@
       <div class="eyebrow">Что такое AkhoMethod</div>
       <h2>Тело — это <em>система</em></h2>
       <div class="divider"></div>
-      <p class="lead">Когда движение, питание и восстановление работают вместе, происходит настоящая трансформация — <strong>не за счёт изматывания, а через осознанность и баланс</strong>.</p>
-      <p class="lead">AkhoMethod — это не программа из интернета. Это живая практика, где сила и гибкость, движение и тишина, нагрузка и восстановление идут рядом. Я соединяю то, что обычно показывают порознь: йогу, силу, дыхание, танец и питание.</p>
+      <p class="lead">Когда движение, сила, питание и восстановление работают вместе, происходит настоящая трансформация — <strong>не за счёт изматывания, а через точную нагрузку, осознанность и баланс</strong>.</p>
+      <p class="lead">AkhoMethod — живая практика, где сила и мобильность, движение и внимание, нагрузка и восстановление идут рядом. Я соединяю то, что часто показывают порознь: йогу, силовую работу, дыхание, танец и питание.</p>
     </section>
 
     <section class="reveal">
@@ -258,19 +268,30 @@
       <div class="pillars">
         <div class="pillar">
           <div class="pillar-mark">I</div>
-          <h3>Тело</h3>
-          <p>Йога, дыхание, функциональная и силовая работа. Сила через движение, а не через насилие над собой.</p>
+          <h3>Сила</h3>
+          <p>Силовая и функциональная работа, мобильность и восстановление. Сила без ненужной жёсткости.</p>
         </div>
         <div class="pillar">
           <div class="pillar-mark">II</div>
           <h3>Движение</h3>
-          <p>Танец, поток, координация. Тело думает быстрее головы — движение раскрывает то, что слова не могут.</p>
+          <p>Координация, пластика, танец и поток. Тело учится решать сложные задачи через движение.</p>
         </div>
         <div class="pillar">
           <div class="pillar-mark">III</div>
-          <h3>Дух</h3>
-          <p>Дыхание, осознанность, внутренняя работа. Связь с собственным телом — основа настоящей красоты.</p>
+          <h3>Сознание</h3>
+          <p>Дыхание, внимание и управление состоянием. Чем лучше чувствуешь тело, тем точнее управляешь собой.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="reveal" id="dragon-flow">
+      <div class="eyebrow">Авторское направление</div>
+      <h2>Dragon <em>Flow</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Dragon Flow вырос внутри AkhoMethod из танца, координации, пластики, дыхания и силовой базы. Это практика, в которой сложное движение становится способом развивать контроль, свободу и присутствие.</p>
+      <div class="dragon-flow">
+        <div class="dragon-flow-main"><h3>Сила · Пластика · Контроль</h3><p>Не копировать форму движения, а находить его качество в своём теле. Не зажиматься ради контроля, а становиться точнее и свободнее.</p></div>
+        <div class="dragon-flow-note"><p>«Осваивая сложное движение, ты учишься управлять не только телом, но и своим состоянием.»</p></div>
       </div>
     </section>
 
@@ -290,11 +311,11 @@
         </div>
         <div class="journey-item">
           <div class="journey-label">Голодания</div>
-          <div class="journey-text">Лечебные голодания и интервальное питание — работа с ритмами тела.</div>
+          <div class="journey-text">Практики голодания и интервальное питание — личный опыт наблюдения за реакциями организма и режимом питания.</div>
         </div>
         <div class="journey-item">
           <div class="journey-label">Жировые</div>
-          <div class="journey-text">Keto, LCHF, диета воина — адаптация к жировому метаболизму.</div>
+          <div class="journey-text">Keto, LCHF и другие низкоуглеводные подходы — опыт разных моделей питания и их влияния на самочувствие.</div>
         </div>
         <div class="journey-item">
           <div class="journey-label">Синтез</div>
@@ -303,12 +324,12 @@
       </div>
     </section>
 
-    <section class="reveal">
+    <section class="reveal" id="about">
       <div class="eyebrow">Кто я</div>
       <h2>Владимир <em>Ахотелашвили</em></h2>
       <div class="divider"></div>
-      <p class="lead">Фитнес-тренер, нутрициолог и практик йоги. <strong>Более 25 лет в движении и более 7 лет работаю с людьми.</strong> Объединяю силовую подготовку, мобильность, йогу, дыхательные практики и знания нутрициологии — помогаю чувствовать себя энергичнее, свободнее двигаться и легче справляться со стрессом.</p>
-      <p class="lead">Дракон в моём символе прошёл путь от воина к <strong>хранителю</strong> — тому, кто ведёт не страхом, а примером.</p>
+      <p class="lead"><strong>Создатель AkhoMethod. Тренер, нутрициолог и практик движения и йоги.</strong> Более 25 лет я исследую движение через хореографию, единоборства, силовой спорт, бодибилдинг, йогу, дыхание и танец; более 7 лет работаю с людьми.</p>
+      <p class="lead">Сегодня я соединяю этот опыт в одну систему, чтобы человек становился сильнее, свободнее двигался, лучше чувствовал тело и мог выстраивать устойчивую практику под свою жизнь.</p>
 
       <div class="stats-row">
         <div class="stat"><div class="stat-num">25+</div><div class="stat-label">лет в движении</div></div>
@@ -330,7 +351,7 @@
       <div class="eyebrow">Символ метода</div>
       <h2>Что скрыто в <em>эмблеме</em></h2>
       <div class="divider"></div>
-      <p class="lead">Эмблема AkhoMethod — это не украшение. Каждый её элемент несёт смысл всего метода.</p>
+      <p class="lead">Эмблема AkhoMethod — визуальный язык метода. Каждый элемент отражает одну из его ключевых идей.</p>
       <div class="emblem-showcase">
         <img class="emblem-large" src="./emblem.png" alt="Эмблема AkhoMethod">
       </div>
@@ -341,15 +362,15 @@
         </div>
         <div class="symbol-item">
           <div class="symbol-mark">Жезл</div>
-          <p>Позвоночник и центральный энергетический канал. Дисциплина и ось человека, вокруг которой строится вся система.</p>
+          <p>Позвоночник, ось тела и внутренняя дисциплина — центр, вокруг которого выстраиваются движение и внимание.</p>
         </div>
         <div class="symbol-item">
           <div class="symbol-mark">Лотос</div>
-          <p>Путь развития: корни в земле, рост через воду, раскрытие к свету. Так человек идёт через тело к сознанию.</p>
+          <p>Образ развития: опора, прохождение через сложность и постепенное раскрытие. Сила развивается вместе с осознанностью.</p>
         </div>
         <div class="symbol-item">
           <div class="symbol-mark">Геометрия</div>
-          <p>Всё связано: тело, дыхание, движение, психика, эмоции, сознание. Именно это метод объединяет в одно.</p>
+          <p>Целостность: тело, дыхание, движение, эмоции и внимание влияют друг на друга и работают как система.</p>
         </div>
       </div>
       <div style="text-align:center; margin-top:44px;">
@@ -361,8 +382,8 @@
 
   <div class="cta reveal">
     <div class="eyebrow" style="position:relative;">Следующий шаг</div>
-    <h2>Готов начать <em>трансформацию?</em></h2>
-    <a class="btn" href="./retreat.html">Ретрит в Замке Монсоро →</a>
+    <h2>Начни с тела. <em>Изменится больше, чем тело.</em></h2>
+    <a class="btn" href="https://telegram.me/VladimirAkho" target="_blank" rel="noopener">Написать Владимиру →</a>
   </div>
 
   <footer>

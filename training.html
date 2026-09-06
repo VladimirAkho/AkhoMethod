@@ -11,7 +11,7 @@
   :root {
     --black: #0A0906; --black-soft: #12100B;
     --gold: #C9A84C; --gold-light: #E8C96D; --gold-dim: rgba(201,168,76,0.5);
-    --white: #F5F2EC; --gray: #9a9488;
+    --white: #F5F2EC; --gray: #B0AA9E;
     --card: rgba(255,255,255,0.03); --card-border: rgba(201,168,76,0.18);
   }
   html { scroll-behavior: smooth; }
@@ -19,7 +19,7 @@
   .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
 
   .back {
-    position: fixed; top: 24px; left: 24px; z-index: 50;
+    position: absolute; top: 24px; left: 24px; z-index: 50;
     display: flex; align-items: center; gap: 8px;
     font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
     color: var(--gold); text-decoration: none;
@@ -122,8 +122,8 @@
 
   /* Music toggle button */
   .music-btn {
-    position: fixed; bottom: 24px; right: 24px; z-index: 200;
-    width: 52px; height: 52px; border-radius: 50%;
+    position: fixed; bottom: 18px; right: 18px; z-index: 200;
+    width: 44px; height: 44px; border-radius: 50%;
     background: rgba(10,9,6,0.85); backdrop-filter: blur(10px);
     border: 1px solid rgba(201,168,76,0.4);
     display: flex; align-items: center; justify-content: center;
@@ -151,7 +151,7 @@
     <div class="emblem"><img src="./emblem.png" alt="AkhoMethod"></div>
     <div class="hero-eyebrow">Персональные тренировки</div>
     <h1>Тренируйся<br><em>со мной</em></h1>
-    <p class="hero-sub">Универсальное, сильное и подвижное тело. Йога, функционал, сила и питание — в одной системе AkhoMethod.</p>
+    <p class="hero-sub">Сильное, подвижное и функциональное тело. Йога, силовая работа, мобильность и питание — в одной системе AkhoMethod.</p>
     <a class="btn" href="#pricing">Смотреть форматы →</a>
   </div>
 
@@ -161,8 +161,8 @@
       <div class="eyebrow">Мой подход</div>
       <h2>Как я <em>работаю</em></h2>
       <div class="divider"></div>
-      <p class="lead">Каждая тренировка — это цельная система. <strong>Первая часть</strong> — функционально-силовая круговая работа с элементами йоги: мобильность, выносливость, сила. <strong>Вторая часть</strong> — работа с железом: бодибилдинг и пауэрлифтинг под твою цель.</p>
-      <p class="lead">Я делаю тело универсальным: сильным, подвижным, красивым. Снижение веса за счёт жира, рост силовых показателей, свобода движения.</p>
+      <p class="lead">Каждая тренировка строится как цельная система: функциональная и силовая работа, мобильность, элементы йоги и работа с отягощениями — в пропорции, которая соответствует твоей цели и уровню подготовки.</p>
+      <p class="lead">Задача — сделать тело сильным, подвижным и функциональным: развивать силовые показатели, качество движения и состав тела без бессмысленного изматывания.</p>
       <div class="video-main">
         <div class="video-frame" id="video-approach">
           <div class="video-placeholder">
@@ -205,6 +205,14 @@
         <div class="approach-card"><div class="approach-num">III</div><h3>Снижение веса</h3><p>Уходит жир, а не мышцы. Тело становится сухим, лёгким и эстетичным.</p></div>
         <div class="approach-card"><div class="approach-num">IV</div><h3>Энергия и состояние</h3><p>Больше сил каждый день, устойчивость к стрессу, связь с собственным телом.</p></div>
       </div>
+    </section>
+
+    <section class="reveal">
+      <div class="eyebrow">Движение</div>
+      <h2>Dragon <em>Flow</em></h2>
+      <div class="divider"></div>
+      <p class="lead">Для тех, кому важна не только сила, но и качество движения: координация, пластика, контроль и свобода. Dragon Flow — отдельное направление внутри AkhoMethod.</p>
+      <a class="btn" href="./method.html#dragon-flow">Узнать о Dragon Flow →</a>
     </section>
   </div>
 
